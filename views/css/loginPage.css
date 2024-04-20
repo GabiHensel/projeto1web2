@@ -39,7 +39,7 @@
     margin-bottom: 5%; 
     width: 100%; 
     max-width: 300px;
-    text-align: center;
+    text-align: left;
     border-radius: 5px; 
     border: 2px solid #D6DEE2;
 }
@@ -55,4 +55,14 @@
     color: white; 
     border-radius: 5px; 
     cursor: pointer; 
+}
+
+#tituloSistema{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Helvetica;
+    color: #4CAF50;
+    font-size: 50px;
 }
