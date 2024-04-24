@@ -1,11 +1,16 @@
+#bc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
 #background {
     background-color: white;
     max-width: 700px; 
+    width: 90%;
     height: auto; 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,13 +19,7 @@
     border-radius: 10px;
     font-family: Helvetica;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-}
-
-
-@media screen and (max-width: 768px) {
-    #background {
-        width: 90%; 
-    }
+    margin-top: 20px;
 }
 
 #titulo{
@@ -58,11 +57,9 @@
 }
 
 #tituloSistema{
-    position: absolute;
-    top: 20%;
-    left: 40%;
-    transform: translate(-30%, -50%);
     font-family: Helvetica;
     color: #4CAF50;
     font-size: 50px;
+    text-align: center;
+    margin-top: 10%;
 }
