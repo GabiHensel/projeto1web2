@@ -6,15 +6,15 @@ const Artigo = sequelize.define('Artigo', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  conteudo: {
+  conteudo: { //o certo é rsumo
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  id_autor: {
+  id_autor: { // int não vai funcionar
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  status: {
+  status: { //é em revisão, avaliado e rejeitado
     type: DataTypes.STRING(20),
     allowNull: false,
     defaultValue: 'submetido',
@@ -22,12 +22,12 @@ const Artigo = sequelize.define('Artigo', {
       isIn: [['submetido', 'em_avaliacao', 'publicado', 'rejeitado']],
     },
   },
-  data_criacao: {
+  data_criacao: { //não precisa de data
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW,
   },
-});
+}); // precisa incluir link do artigo
 
 (async () => {
   try {

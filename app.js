@@ -35,7 +35,7 @@ app.get("/Avaliador", function (req, res) {
   res.sendFile(path.join(__dirname + '/views/inicioAvaliador.html'));
 });
 
-app.listen(3000, async () => {
+app.listen(4000, async () => {
   console.log("Servidor iniciado na porta 3000");
 
   // Sincroniza o modelo com o banco de dados

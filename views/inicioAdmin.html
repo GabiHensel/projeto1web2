@@ -8,16 +8,75 @@
     <div id="inicio">
         <div id="menu">
             <label id="SAA">SAA</label>
-            <button class="menu-btn" id="btn-listar">Listar Artigos</button>
-            <button class="menu-btn" id="btn-listarUser">listar usuários</button>
+            <button class="menu-btn" id="btn-listar">listar artigos</button>
             <button class="menu-btn" id="btn-sair">sair</button>
         </div>
         <div id="background">
             <div class="article-list">
                 <ul id="article-list">
-                  <!-- Aqui serão inseridos dinamicamente os artigos -->
+                    <li>
+                        <div>
+                            <h3>Título</h3>
+                            <p><strong>Resumo:</strong><span>{$artigo.titulo}</span></p>
+                            <p><strong>Autores:</strong></p>
+                            <p><strong>Status:</strong></p>
+                            <p><strong>Nota:</strong></p>
+                            <p><strong>Link:</strong> <a>Ver artigo</a></p>
+                        </div>
+                        <div class="article-buttons">
+                            <button class="edit-button" data-id="${article.id}">Editar</button>
+                            <button class="delete-button" data-id="${article.id}">Deletar</button>  
+                        </div>                     
+                    </li>
                 </ul>
             </div>
         </div>
+    </div>
+
 </body>
+<script>
+    document.getElementById('btn-listar').addEventListener('click', function() {
+    document.getElementById('background').style.display = 'block';
+});
+</script>
+<script>
+    document.getElementById('btn-listar').addEventListener('click', function() {
+        // Fazer uma requisição AJAX para listar os artigos
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://localhost:4000/listarartigos');
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                var artigos = JSON.parse(xhr.responseText);
+
+                // Atualizar a lista de artigos na página
+                var articleList = document.getElementById('article-list');
+                articleList.innerHTML = ''; // Limpar a lista antes de adicionar os novos artigos
+
+                artigos.forEach(function(artigo) {
+                    var li = document.createElement('li');
+                    li.innerHTML = `
+                        <div>
+                            <h3>${artigo.titulo}</h3>
+                            <p><strong>Resumo:</strong><span>${artigo.resumo}</span></p>
+                            <p><strong>Autores:</strong> ${Array.isArray(artigo.autores) ? artigo.autores.join(', ') : 'N/A'}</p>
+                            <p><strong>Status:</strong> ${artigo.status}</p>
+                            <p><strong>Nota:</strong> ${artigo.nota}</p>
+                            <p><strong>Link:</strong> <a href="${artigo.link}" target="_blank">Ver artigo</a></p>
+                        </div>
+                        <div class="article-buttons">
+                            <button class="edit-button" data-id="${artigo.id}">Editar</button>
+                            <button class="delete-button" data-id="${artigo.id}">Deletar</button>  
+                        </div>
+                    `;
+                    articleList.appendChild(li);
+                });
+            } else {
+                console.error('Erro ao obter os artigos:', xhr.statusText);
+            }
+        };
+        xhr.send();
+        
+        document.getElementById('background').style.display = 'block';
+    });
+</script>
 </html>
