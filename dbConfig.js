@@ -5,4 +5,4 @@ const sequelize = new Sequelize('web2', 'postgres', 'postgres', {
     dialect: 'postgres',
 });
 
-module.exports = sequelize;s
+module.exports = sequelize;

@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('C:/Users/Usuario/Documents/GitHub/projeto1web2/dbConfig'); // Importe a configuração do banco de dados
+const sequelize = require('../dbConfig.js'); // Importe a configuração do banco de dados
 
 const Artigo = sequelize.define('Artigo', {
   titulo: {
